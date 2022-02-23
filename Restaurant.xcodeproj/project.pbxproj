@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		796B39F227C511F700C122CB /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796B39F127C511F700C122CB /* MenuController.swift */; };
+		796B39F827C5171500C122CB /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796B39F727C5171500C122CB /* APIRequest.swift */; };
 		79EB530D27B469A300C0B74B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EB530C27B469A300C0B74B /* AppDelegate.swift */; };
 		79EB530F27B469A300C0B74B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EB530E27B469A300C0B74B /* SceneDelegate.swift */; };
 		79EB531427B469A300C0B74B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79EB531227B469A300C0B74B /* Main.storyboard */; };
@@ -24,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		796B39F127C511F700C122CB /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
+		796B39F727C5171500C122CB /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		79EB530927B469A300C0B74B /* Restaurant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Restaurant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79EB530C27B469A300C0B74B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79EB530E27B469A300C0B74B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +57,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		796B39F327C5126100C122CB /* Model Controller */ = {
+			isa = PBXGroup;
+			children = (
+				796B39F127C511F700C122CB /* MenuController.swift */,
+			);
+			path = "Model Controller";
+			sourceTree = "<group>";
+		};
+		796B39F927C5171F00C122CB /* API Request */ = {
+			isa = PBXGroup;
+			children = (
+				796B39F727C5171500C122CB /* APIRequest.swift */,
+			);
+			path = "API Request";
+			sourceTree = "<group>";
+		};
 		79EB530027B469A300C0B74B = {
 			isa = PBXGroup;
 			children = (
@@ -86,6 +106,8 @@
 		79EB532727B46C5E00C0B74B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				796B39F327C5126100C122CB /* Model Controller */,
+				796B39F927C5171F00C122CB /* API Request */,
 				79EB532027B46C2800C0B74B /* MenuTableViewController.swift */,
 				79EB532927B46D0B00C0B74B /* MenuItemDetailViewController.swift */,
 				79EB532227B46C3600C0B74B /* OrderTableViewController.swift */,
@@ -219,9 +241,11 @@
 				79EB532F27B46FDB00C0B74B /* MenuResponse.swift in Sources */,
 				79EB532327B46C3600C0B74B /* OrderTableViewController.swift in Sources */,
 				79EB533127B4700600C0B74B /* CategoriesResponse.swift in Sources */,
+				796B39F227C511F700C122CB /* MenuController.swift in Sources */,
 				79EB533627B4715000C0B74B /* Order.swift in Sources */,
 				79EB532A27B46D0B00C0B74B /* MenuItemDetailViewController.swift in Sources */,
 				79EB533327B4709D00C0B74B /* OrderResponse.swift in Sources */,
+				796B39F827C5171500C122CB /* APIRequest.swift in Sources */,
 				79EB530D27B469A300C0B74B /* AppDelegate.swift in Sources */,
 				79EB532527B46C4400C0B74B /* CategoryTableViewController.swift in Sources */,
 				79EB530F27B469A300C0B74B /* SceneDelegate.swift in Sources */,
