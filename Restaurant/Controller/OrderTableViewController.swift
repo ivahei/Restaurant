@@ -7,7 +7,7 @@
 
 import UIKit
 
-class OrderTableViewController: UITableViewController {
+final class OrderTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
