@@ -10,19 +10,36 @@ import UIKit
 final class OrderTableViewController: UITableViewController {
     let menuController = MenuController.shared
 
+    // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
 
         guard let tableView = tableView else { fatalError() }
 
-        navigationItem.leftBarButtonItem = editButtonItem
-        
         NotificationCenter.default.addObserver(
             tableView,
             selector: #selector(UITableView.reloadData),
             name: MenuController.orderUpdatedNotification, object: nil
         )
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        if menuController.order.menuItems.isEmpty {
+            navigationItem.leftBarButtonItem = nil
+        } else {
+            navigationItem.leftBarButtonItem = editButtonItem
+        }
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+
+        self.tabBarController?.tabBar.isHidden = false
+    }
+
+    // MARK: - TableView methods
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return menuController.order.menuItems.count

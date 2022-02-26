@@ -11,6 +11,8 @@ final class MenuItemDetailViewController: UIViewController {
 
     let menuItem: MenuItem
 
+    // MARK: - Init
+
     init?(coder: NSCoder, menuItem: MenuItem) {
         self.menuItem = menuItem
         super.init(coder: coder)
@@ -22,23 +24,42 @@ final class MenuItemDetailViewController: UIViewController {
 
     let menuController = MenuController.shared
 
+    // MARK: - Outlets
+
     @IBOutlet private var nameLabel: UILabel!
     @IBOutlet private var imageView: UIImageView!
     @IBOutlet private var priceLabel: UILabel!
     @IBOutlet private var detailTextLabel: UILabel!
     @IBOutlet private var addToOrderButton: UIButton!
 
+    // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
 
         updateUI()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        self.tabBarController?.tabBar.isHidden = true
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        self.tabBarController?.tabBar.isHidden = false
+    }
+
+    // MARK: - Update UI
+
     func updateUI() {
         nameLabel.text = menuItem.name
         priceLabel.text = menuItem.price.formatted(.currency(code: "usd"))
         detailTextLabel.text = menuItem.detailText
     }
+
+    // MARK: - Order Button Tapped
 
     @IBAction func orderButtonTapped(_ sender: UIButton) {
         UIView.animate(

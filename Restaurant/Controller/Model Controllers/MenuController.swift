@@ -11,6 +11,8 @@ final class MenuController {
     static let shared = MenuController()
     private init() {}
 
+    // MARK: - Order
+
     var order = Order() { didSet {
         NotificationCenter.default.post(name: MenuController.orderUpdatedNotification, object: nil)
     }}

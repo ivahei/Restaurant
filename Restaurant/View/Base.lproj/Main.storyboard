@@ -218,7 +218,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3gs-pF-cYG">
-                                <rect key="frame" x="15" y="732" width="360" height="44"/>
+                                <rect key="frame" x="15" y="702" width="360" height="44"/>
                                 <color key="backgroundColor" systemColor="linkColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="VtM-UZ-AUh"/>
@@ -237,9 +237,9 @@
                         <constraints>
                             <constraint firstItem="jP7-6e-FX3" firstAttribute="leading" secondItem="Nvv-pc-Esc" secondAttribute="leading" constant="15" id="3U7-p8-8Dw"/>
                             <constraint firstItem="jP7-6e-FX3" firstAttribute="top" secondItem="Nvv-pc-Esc" secondAttribute="top" constant="15" id="9BV-MK-Xxd"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="3gs-pF-cYG" secondAttribute="bottom" constant="15" id="Ewz-XI-hje"/>
                             <constraint firstItem="Nvv-pc-Esc" firstAttribute="trailing" secondItem="3gs-pF-cYG" secondAttribute="trailing" constant="15" id="MY9-fo-75C"/>
                             <constraint firstItem="3gs-pF-cYG" firstAttribute="leading" secondItem="Nvv-pc-Esc" secondAttribute="leading" constant="15" id="X2O-vy-yDB"/>
-                            <constraint firstItem="3gs-pF-cYG" firstAttribute="bottom" secondItem="Nvv-pc-Esc" secondAttribute="bottom" constant="15" id="cHx-rY-FEw"/>
                             <constraint firstItem="btJ-EE-O3o" firstAttribute="height" secondItem="HQ0-fA-B5T" secondAttribute="height" multiplier="0.25" id="cl9-av-iUR"/>
                             <constraint firstItem="Nvv-pc-Esc" firstAttribute="trailing" secondItem="jP7-6e-FX3" secondAttribute="trailing" constant="15" id="rvP-1M-rxm"/>
                         </constraints>
