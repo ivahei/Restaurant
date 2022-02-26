@@ -11,6 +11,12 @@ final class MenuController {
     static let shared = MenuController()
     private init() {}
 
+    var order = Order() { didSet {
+        NotificationCenter.default.post(name: MenuController.orderUpdatedNotification, object: nil)
+    }}
+
+    static let orderUpdatedNotification = Notification.Name("MenuController.orderUpdated")
+
     // MARK: - Send Request
 
     func sendRequest<Request: APIRequest>(_ request: Request) async throws -> Request.Response {

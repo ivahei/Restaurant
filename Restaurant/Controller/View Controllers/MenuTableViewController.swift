@@ -11,12 +11,12 @@ final class MenuTableViewController: UITableViewController {
     let menuController = MenuController.shared
     let category: String
     var menuItems = [MenuItem]()
-    
+
     init?(coder: NSCoder, category: String) {
         self.category = category
         super.init(coder: coder)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -74,7 +74,7 @@ final class MenuTableViewController: UITableViewController {
         return 1
     }
 
-    override func tableView(_ tableView: UITableView,numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return menuItems.count
     }
 

@@ -20,6 +20,8 @@ final class MenuItemDetailViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+    let menuController = MenuController.shared
+
     @IBOutlet private var nameLabel: UILabel!
     @IBOutlet private var imageView: UIImageView!
     @IBOutlet private var priceLabel: UILabel!
@@ -49,5 +51,6 @@ final class MenuItemDetailViewController: UIViewController {
                 self.addToOrderButton.transform = CGAffineTransform(scaleX: 2.0, y: 2.0)
                 self.addToOrderButton.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
             })
+        menuController.order.menuItems.append(menuItem)
     }
 }
