@@ -41,12 +41,6 @@ final class MenuItemDetailViewController: UIViewController {
         updateUI()
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-        menuController.updateUserActivity(with: .menuItemDetail(menuItem))
-    }
-
     // MARK: - Update UI
 
     func updateUI() {

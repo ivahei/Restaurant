@@ -33,12 +33,6 @@ final class OrderTableViewController: UITableViewController {
         checkContent(of: menuController.order.menuItems)
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-        menuController.updateUserActivity(with: .order)
-    }
-
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
@@ -48,19 +42,25 @@ final class OrderTableViewController: UITableViewController {
     // MARK: - Check Content of menuItems
 
     func checkContent(of menuItems: [MenuItem]) {
-        navigationItem.leftBarButtonItem?.isEnabled = !menuItems.isEmpty
-        navigationItem.rightBarButtonItem?.isEnabled = !menuItems.isEmpty
+        if menuItems.isEmpty {
+            navigationItem.leftBarButtonItem?.isEnabled = false
+            navigationItem.rightBarButtonItem?.isEnabled = false
+        } else {
+            navigationItem.leftBarButtonItem?.isEnabled = true
+            navigationItem.rightBarButtonItem?.isEnabled = true
+        }
     }
 
     // MARK: - Confirm Order Segue
 
-    @IBSegueAction
-    func confirmOrder(_ coder: NSCoder) -> OrderConfirmationViewController? {
+    @IBSegueAction func confirmOrder(_ coder: NSCoder) -> OrderConfirmationViewController? {
         return OrderConfirmationViewController(coder: coder, minutesToPrepare: minutesToPrepareOrder)
     }
 
     @IBAction func submitTapped(_ sender: Any) {
-        let orderTotal = menuController.order.menuItems.reduce(0.0) { $0 + $1.price }
+        let orderTotal = menuController.order.menuItems.reduce(0.0) { (result, menuItem) -> Double in
+            return result + menuItem.price
+        }
 
         let formattedTotal = orderTotal.formatted(.currency(code: "usd"))
 
@@ -69,17 +69,17 @@ final class OrderTableViewController: UITableViewController {
             message: "You are about to submit your order with a total of \(formattedTotal)",
             preferredStyle: .actionSheet
         )
-        alertController.addAction(UIAlertAction(title: "Submit", style: .default) { [weak self] _ in
+        alertController.addAction(UIAlertAction(title: "Submit", style: .default, handler: { [weak self] _ in
             self?.uploadOrder()
-        })
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        }))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
 
         present(alertController, animated: true, completion: nil)
     }
 
     func uploadOrder() {
         let menuIds = MenuController.shared.order.menuItems.map { $0.id }
-        Task {
+        Task.init {
             do {
                 let minutesToPrepare = try await
                 menuController.sendRequest(SubmitOrder(menuIDs: menuIds))
