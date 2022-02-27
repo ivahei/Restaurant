@@ -10,6 +10,8 @@ import UIKit
 final class OrderTableViewController: UITableViewController {
     let menuController = MenuController.shared
 
+    var minutesToPrepareOrder = 0
+
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,25 +23,90 @@ final class OrderTableViewController: UITableViewController {
             selector: #selector(UITableView.reloadData),
             name: MenuController.orderUpdatedNotification, object: nil
         )
+
+        navigationItem.leftBarButtonItem = editButtonItem
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        if menuController.order.menuItems.isEmpty {
-            navigationItem.leftBarButtonItem = nil
-        } else {
-            navigationItem.leftBarButtonItem = editButtonItem
-        }
+        checkContent(of: menuController.order.menuItems)
     }
 
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
 
         self.tabBarController?.tabBar.isHidden = false
     }
 
-    // MARK: - TableView methods
+    // MARK: - Check Content of menuItems
+
+    func checkContent(of menuItems: [MenuItem]) {
+        if menuItems.isEmpty {
+            navigationItem.leftBarButtonItem?.isEnabled = false
+            navigationItem.rightBarButtonItem?.isEnabled = false
+        } else {
+            navigationItem.leftBarButtonItem?.isEnabled = true
+            navigationItem.rightBarButtonItem?.isEnabled = true
+        }
+    }
+
+    // MARK: - Confirm Order Segue
+
+    @IBSegueAction func confirmOrder(_ coder: NSCoder) -> OrderConfirmationViewController? {
+        return OrderConfirmationViewController(coder: coder, minutesToPrepare: minutesToPrepareOrder)
+    }
+
+    @IBAction func submitTapped(_ sender: Any) {
+        let orderTotal = menuController.order.menuItems.reduce(0.0) { (result, menuItem) -> Double in
+            return result + menuItem.price
+        }
+
+        let formattedTotal = orderTotal.formatted(.currency(code: "usd"))
+
+        let alertController = UIAlertController(
+            title: "Confirm Order",
+            message: "You are about to submit your order with a total of \(formattedTotal)",
+            preferredStyle: .actionSheet
+        )
+        alertController.addAction(UIAlertAction(title: "Submit", style: .default, handler: { [weak self] _ in
+            self?.uploadOrder()
+        }))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+
+        present(alertController, animated: true, completion: nil)
+    }
+
+    func uploadOrder() {
+        let menuIds = MenuController.shared.order.menuItems.map { $0.id }
+        Task.init {
+            do {
+                let minutesToPrepare = try await
+                menuController.sendRequest(SubmitOrder(menuIDs: menuIds))
+                minutesToPrepareOrder = minutesToPrepare
+                performSegue(withIdentifier: "confirmOrder", sender: nil)
+            } catch {
+                displayError(error, title: "Order Submission Failed")
+            }
+        }
+    }
+
+    func displayError(_ error: Error, title: String) {
+        if viewIfLoaded?.window != nil {
+            let alert = UIAlertController(
+                title: title,
+                message: error.localizedDescription,
+                preferredStyle: .alert
+            )
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .default))
+            self.present(alert, animated: true)
+        }
+    }
+}
+
+// MARK: - TableViewController Methods
+
+extension OrderTableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return menuController.order.menuItems.count
@@ -68,6 +135,7 @@ final class OrderTableViewController: UITableViewController {
     ) {
         if editingStyle == .delete {
             menuController.order.menuItems.remove(at: indexPath.row)
+            checkContent(of: menuController.order.menuItems)
         }
     }
 }

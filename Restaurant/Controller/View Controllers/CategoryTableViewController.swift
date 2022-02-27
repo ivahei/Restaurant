@@ -59,6 +59,8 @@ final class CategoryTableViewController: UITableViewController {
         return MenuTableViewController(coder: coder, category: category)
     }
 
+    @IBAction func prepareForUnwind(segue: UIStoryboardSegue) { }
+
     // MARK: - Table View Methods
 
     override func numberOfSections(in tableView: UITableView) -> Int {
