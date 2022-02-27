@@ -77,9 +77,11 @@ final class OrderTableViewController: UITableViewController {
         present(alertController, animated: true, completion: nil)
     }
 
+    // MARK: - Upload Order
+
     func uploadOrder() {
         let menuIds = MenuController.shared.order.menuItems.map { $0.id }
-        Task.init {
+        Task {
             do {
                 let minutesToPrepare = try await
                 menuController.sendRequest(SubmitOrder(menuIDs: menuIds))
@@ -90,6 +92,8 @@ final class OrderTableViewController: UITableViewController {
             }
         }
     }
+
+    // MARK: - Display Order Error
 
     func displayError(_ error: Error, title: String) {
         if viewIfLoaded?.window != nil {
