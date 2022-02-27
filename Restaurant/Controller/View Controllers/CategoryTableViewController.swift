@@ -58,9 +58,11 @@ final class CategoryTableViewController: UITableViewController {
         let category = categories[indexPath.row]
         return MenuTableViewController(coder: coder, category: category)
     }
+
+    @IBAction func prepareForUnwind(segue: UIStoryboardSegue) { }
 }
 
-// MARK: - Table View Methods
+    // MARK: - Table View Methods
 
 extension CategoryTableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
