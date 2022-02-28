@@ -58,13 +58,11 @@ final class CategoryTableViewController: UITableViewController {
         let category = categories[indexPath.row]
         return MenuTableViewController(coder: coder, category: category)
     }
+}
 
-    // MARK: - Table View Methods
+// MARK: - Table View Methods
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
+extension CategoryTableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categories.count
     }

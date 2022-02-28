@@ -69,10 +69,10 @@ final class MenuTableViewController: UITableViewController {
         let menuItem = menuItems[indexPath.row]
         return MenuItemDetailViewController(coder: coder, menuItem: menuItem)
     }
+}
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
+// MARK: - TableView Methods
+extension MenuTableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return menuItems.count
