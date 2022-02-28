@@ -80,7 +80,7 @@ final class MenuTableViewController: UITableViewController {
     }
 }
 
-// MARK: - TableView Methods
+// MARK: - Table View Methods
 
 extension MenuTableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
