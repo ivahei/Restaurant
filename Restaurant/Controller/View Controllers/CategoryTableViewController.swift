@@ -60,13 +60,11 @@ final class CategoryTableViewController: UITableViewController {
     }
 
     @IBAction func prepareForUnwind(segue: UIStoryboardSegue) { }
+}
 
-    // MARK: - Table View Methods
+// MARK: - Table View Methods
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
+extension CategoryTableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categories.count
     }
