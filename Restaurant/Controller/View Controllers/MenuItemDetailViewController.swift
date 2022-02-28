@@ -7,6 +7,8 @@
 
 import UIKit
 
+import Kingfisher
+
 final class MenuItemDetailViewController: UIViewController {
 
     let menuItem: MenuItem
@@ -45,6 +47,7 @@ final class MenuItemDetailViewController: UIViewController {
         nameLabel.text = menuItem.name
         priceLabel.text = menuItem.price.formatted(.currency(code: "usd"))
         detailTextLabel.text = menuItem.detailText
+        imageView.kf.setImage(with: menuItem.imageURL, placeholder: UIImage(systemName: "trash") )
     }
 
     // MARK: - Order Button Tapped
@@ -59,7 +62,8 @@ final class MenuItemDetailViewController: UIViewController {
             animations: {
                 self.addToOrderButton.transform = CGAffineTransform(scaleX: 2.0, y: 2.0)
                 self.addToOrderButton.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-            })
+            }
+        )
         menuController.order.menuItems.append(menuItem)
     }
 }

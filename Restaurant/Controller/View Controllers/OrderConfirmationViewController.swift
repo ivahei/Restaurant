@@ -7,7 +7,7 @@
 
 import UIKit
 
-class OrderConfirmationViewController: BaseViewController {
+class OrderConfirmationViewController: UIViewController {
 
     let menuController = MenuController.shared
     let minutesToPrepare: Int

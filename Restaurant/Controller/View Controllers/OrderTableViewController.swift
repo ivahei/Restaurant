@@ -53,14 +53,13 @@ final class OrderTableViewController: UITableViewController {
 
     // MARK: - Confirm Order Segue
 
-    @IBSegueAction func confirmOrder(_ coder: NSCoder) -> OrderConfirmationViewController? {
+    @IBSegueAction
+    func confirmOrder(_ coder: NSCoder) -> OrderConfirmationViewController? {
         return OrderConfirmationViewController(coder: coder, minutesToPrepare: minutesToPrepareOrder)
     }
 
     @IBAction func submitTapped(_ sender: Any) {
-        let orderTotal = menuController.order.menuItems.reduce(0.0) { (result, menuItem) -> Double in
-            return result + menuItem.price
-        }
+        let orderTotal = menuController.order.menuItems.reduce(0.0) { $0 + $1.price }
 
         let formattedTotal = orderTotal.formatted(.currency(code: "usd"))
 

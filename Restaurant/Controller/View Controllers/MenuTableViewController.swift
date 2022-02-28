@@ -61,19 +61,20 @@ final class MenuTableViewController: UITableViewController {
 
     // MARK: - ShowMenuItem Segue Action
 
-    @IBSegueAction func showMenuItem(_ coder: NSCoder, sender: Any?) -> MenuItemDetailViewController? {
+    @IBSegueAction
+    func showMenuItem(_ coder: NSCoder, sender: Any?) -> MenuItemDetailViewController? {
         guard
             let cell = sender as? UITableViewCell,
             let indexPath = tableView.indexPath(for: cell)
-           else { return nil }
+        else { return nil }
         let menuItem = menuItems[indexPath.row]
         return MenuItemDetailViewController(coder: coder, menuItem: menuItem)
     }
 }
 
 // MARK: - TableView Methods
-extension MenuTableViewController {
 
+extension MenuTableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return menuItems.count
     }

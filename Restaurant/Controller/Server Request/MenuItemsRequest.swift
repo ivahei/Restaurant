@@ -19,7 +19,8 @@ struct MenuItemsRequest: APIRequest {
             var urlComponents = URLComponents(url: initialMenuURL, resolvingAgainstBaseURL: true)
         else { fatalError() }
         urlComponents.queryItems = [URLQueryItem(name: "category", value: name)]
-        let request = URLRequest(url: urlComponents.url!)
+        guard let url = urlComponents.url else { fatalError() }
+        let request = URLRequest(url: url)
         return request
     }
 
