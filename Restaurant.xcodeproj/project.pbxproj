@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		795999FA27C5C03400A218A7 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795999F727C5C03400A218A7 /* APIRequest.swift */; };
+		795999FB27C5C03400A218A7 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795999F927C5C03400A218A7 /* MenuController.swift */; };
+		795999FD27C5C66900A218A7 /* CategoryRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795999FC27C5C66900A218A7 /* CategoryRequest.swift */; };
+		795999FF27C5C82100A218A7 /* MenuItemsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795999FE27C5C82100A218A7 /* MenuItemsRequest.swift */; };
+		79599A0127C5C8D900A218A7 /* SubmitOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79599A0027C5C8D900A218A7 /* SubmitOrder.swift */; };
+		79E31DA127CA84420002E795 /* OrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E31DA027CA84420002E795 /* OrderTableViewCell.swift */; };
 		79EB530D27B469A300C0B74B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EB530C27B469A300C0B74B /* AppDelegate.swift */; };
 		79EB530F27B469A300C0B74B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EB530E27B469A300C0B74B /* SceneDelegate.swift */; };
 		79EB531427B469A300C0B74B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79EB531227B469A300C0B74B /* Main.storyboard */; };
@@ -24,6 +30,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		795999F727C5C03400A218A7 /* APIRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
+		795999F927C5C03400A218A7 /* MenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
+		795999FC27C5C66900A218A7 /* CategoryRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRequest.swift; sourceTree = "<group>"; };
+		795999FE27C5C82100A218A7 /* MenuItemsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemsRequest.swift; sourceTree = "<group>"; };
+		79599A0027C5C8D900A218A7 /* SubmitOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitOrder.swift; sourceTree = "<group>"; };
+		79E31DA027CA84420002E795 /* OrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTableViewCell.swift; sourceTree = "<group>"; };
 		79EB530927B469A300C0B74B /* Restaurant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Restaurant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79EB530C27B469A300C0B74B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79EB530E27B469A300C0B74B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +65,51 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		795999F627C5C03400A218A7 /* API Request */ = {
+			isa = PBXGroup;
+			children = (
+				795999F727C5C03400A218A7 /* APIRequest.swift */,
+			);
+			path = "API Request";
+			sourceTree = "<group>";
+		};
+		795999F827C5C03400A218A7 /* Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				795999F927C5C03400A218A7 /* MenuController.swift */,
+			);
+			path = "Model Controllers";
+			sourceTree = "<group>";
+		};
+		79599A0227C5CAB500A218A7 /* Server Request */ = {
+			isa = PBXGroup;
+			children = (
+				795999FC27C5C66900A218A7 /* CategoryRequest.swift */,
+				795999FE27C5C82100A218A7 /* MenuItemsRequest.swift */,
+				79599A0027C5C8D900A218A7 /* SubmitOrder.swift */,
+			);
+			path = "Server Request";
+			sourceTree = "<group>";
+		};
+		79E31D9F27CA83F80002E795 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				79EB532427B46C4400C0B74B /* CategoryTableViewController.swift */,
+				79EB532027B46C2800C0B74B /* MenuTableViewController.swift */,
+				79EB532927B46D0B00C0B74B /* MenuItemDetailViewController.swift */,
+				79EB532227B46C3600C0B74B /* OrderTableViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		79E31DA227CA84470002E795 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				79E31DA027CA84420002E795 /* OrderTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		79EB530027B469A300C0B74B = {
 			isa = PBXGroup;
 			children = (
@@ -86,10 +143,11 @@
 		79EB532727B46C5E00C0B74B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				79EB532027B46C2800C0B74B /* MenuTableViewController.swift */,
-				79EB532927B46D0B00C0B74B /* MenuItemDetailViewController.swift */,
-				79EB532227B46C3600C0B74B /* OrderTableViewController.swift */,
-				79EB532427B46C4400C0B74B /* CategoryTableViewController.swift */,
+				795999F627C5C03400A218A7 /* API Request */,
+				79599A0227C5CAB500A218A7 /* Server Request */,
+				795999F827C5C03400A218A7 /* Model Controllers */,
+				79E31D9F27CA83F80002E795 /* View Controllers */,
+				79E31DA227CA84470002E795 /* Cells */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -217,6 +275,8 @@
 			files = (
 				79EB532C27B46E3900C0B74B /* MenuItem.swift in Sources */,
 				79EB532F27B46FDB00C0B74B /* MenuResponse.swift in Sources */,
+				795999FF27C5C82100A218A7 /* MenuItemsRequest.swift in Sources */,
+				79E31DA127CA84420002E795 /* OrderTableViewCell.swift in Sources */,
 				79EB532327B46C3600C0B74B /* OrderTableViewController.swift in Sources */,
 				79EB533127B4700600C0B74B /* CategoriesResponse.swift in Sources */,
 				79EB533627B4715000C0B74B /* Order.swift in Sources */,
@@ -224,7 +284,11 @@
 				79EB533327B4709D00C0B74B /* OrderResponse.swift in Sources */,
 				79EB530D27B469A300C0B74B /* AppDelegate.swift in Sources */,
 				79EB532527B46C4400C0B74B /* CategoryTableViewController.swift in Sources */,
+				795999FD27C5C66900A218A7 /* CategoryRequest.swift in Sources */,
 				79EB530F27B469A300C0B74B /* SceneDelegate.swift in Sources */,
+				79599A0127C5C8D900A218A7 /* SubmitOrder.swift in Sources */,
+				795999FA27C5C03400A218A7 /* APIRequest.swift in Sources */,
+				795999FB27C5C03400A218A7 /* MenuController.swift in Sources */,
 				79EB532127B46C2800C0B74B /* MenuTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
