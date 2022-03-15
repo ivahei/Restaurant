@@ -17,14 +17,14 @@ struct SubmitOrder: APIRequest {
         var request = URLRequest(url: orderURL)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
+
         let menuIdsDict = ["menuIds": menuIDs]
         let jsonEncoder = JSONEncoder()
         let jsonData = try? jsonEncoder.encode(menuIdsDict)
         request.httpBody = jsonData
         return request
     }
-    
+
     func decodeResponse(data: Data) throws -> Response {
         let orderResponse = try JSONDecoder().decode(OrderResponse.self, from: data)
         return orderResponse.prepTime

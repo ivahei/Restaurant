@@ -45,7 +45,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneDidEnterBackground(_ scene: UIScene) {
     }
 
-    @objc func updateOrderBadge() {
+    @objc
+    func updateOrderBadge() {
         switch menuController.order.menuItems.count {
         case 0:
             orderTabBarItem.badgeValue = nil

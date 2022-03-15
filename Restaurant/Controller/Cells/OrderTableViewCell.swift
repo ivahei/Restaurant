@@ -7,14 +7,19 @@
 
 import UIKit
 
+import Kingfisher
+
 final class OrderTableViewCell: UITableViewCell {
 
-    @IBOutlet var orderName: UILabel!
-    @IBOutlet var orderPrice: UILabel!
+    let menuController = MenuController.shared
+
+    @IBOutlet private var orderName: UILabel!
+    @IBOutlet private var orderPrice: UILabel!
+    @IBOutlet private var orderImageView: UIImageView!
 
     func populate(with model: MenuItem) {
         orderName.text = model.name
         orderPrice.text = model.price.formatted(.currency(code: "usd"))
+        orderImageView.kf.setImage(with: model.imageURL, placeholder: UIImage(systemName: "trash") )
     }
-
 }

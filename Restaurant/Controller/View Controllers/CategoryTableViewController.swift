@@ -49,7 +49,8 @@ final class CategoryTableViewController: UITableViewController {
 
     // MARK: - ShowMenu Segue Action
 
-    @IBSegueAction func showMenu(_ coder: NSCoder, sender: Any?) -> MenuTableViewController? {
+    @IBSegueAction
+    func showMenu(_ coder: NSCoder, sender: Any?) -> MenuTableViewController? {
         guard
             let cell = sender as? UITableViewCell,
             let indexPath = tableView.indexPath(for: cell)
@@ -58,6 +59,8 @@ final class CategoryTableViewController: UITableViewController {
         let category = categories[indexPath.row]
         return MenuTableViewController(coder: coder, category: category)
     }
+
+    @IBAction func prepareForUnwind(segue: UIStoryboardSegue) { }
 }
 
 // MARK: - Table View Methods
