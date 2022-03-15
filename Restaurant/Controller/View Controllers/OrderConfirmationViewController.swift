@@ -26,7 +26,7 @@ class OrderConfirmationViewController: UIViewController {
         super.viewDidLoad()
 
         confirmationLabel.text =
-        "Thank you for your order! Your wait time is approximately \(minutesToPrepare) minutes."
+            "Thank you for your order! Your wait time is approximately \(minutesToPrepare) minutes."
     }
 
     @IBAction func dismissAction(_ sender: Any) {
