@@ -33,6 +33,12 @@ final class OrderTableViewController: UITableViewController {
         checkContent(of: menuController.order.menuItems)
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        menuController.updateUserActivity(with: .order)
+    }
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
@@ -68,19 +74,17 @@ final class OrderTableViewController: UITableViewController {
             message: "You are about to submit your order with a total of \(formattedTotal)",
             preferredStyle: .actionSheet
         )
-        alertController.addAction(UIAlertAction(title: "Submit", style: .default) { [weak self] _ in
+        alertController.addAction(UIAlertAction(title: "Submit", style: .default, handler: { [weak self] _ in
             self?.uploadOrder()
-        })
+        }))
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
 
         present(alertController, animated: true, completion: nil)
     }
 
-    // MARK: - Upload Order
-
     func uploadOrder() {
         let menuIds = MenuController.shared.order.menuItems.map { $0.id }
-        Task {
+        Task.init {
             do {
                 let minutesToPrepare = try await
                 menuController.sendRequest(SubmitOrder(menuIDs: menuIds))
@@ -91,8 +95,6 @@ final class OrderTableViewController: UITableViewController {
             }
         }
     }
-
-    // MARK: - Display Order Error
 
     func displayError(_ error: Error, title: String) {
         if viewIfLoaded?.window != nil {

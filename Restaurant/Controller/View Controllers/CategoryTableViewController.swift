@@ -11,6 +11,7 @@ final class CategoryTableViewController: UITableViewController {
     let menuController = MenuController.shared
     var categories = [String]()
 
+    // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,6 +25,12 @@ final class CategoryTableViewController: UITableViewController {
                 displayError(error, title: "Failed to Fetch Categories")
             }
         }
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        menuController.updateUserActivity(with: .categories)
     }
 
     // MARK: - Update UI

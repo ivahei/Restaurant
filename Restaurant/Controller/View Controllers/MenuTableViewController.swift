@@ -21,6 +21,8 @@ final class MenuTableViewController: UITableViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: - Lifecycle Methods
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -36,6 +38,12 @@ final class MenuTableViewController: UITableViewController {
                 displayError(error, title: "Failed to Fetch Menu Items for \(self.category)")
             }
         }
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        menuController.updateUserActivity(with: .menu(category: category))
     }
 
     // MARK: - Update UI
