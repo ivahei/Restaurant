@@ -68,9 +68,9 @@ final class OrderTableViewController: UITableViewController {
             message: "You are about to submit your order with a total of \(formattedTotal)",
             preferredStyle: .actionSheet
         )
-        alertController.addAction(UIAlertAction(title: "Submit", style: .default, handler: { [weak self] _ in
+        alertController.addAction(UIAlertAction(title: "Submit", style: .default) { [weak self] _ in
             self?.uploadOrder()
-        }))
+        })
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
 
         present(alertController, animated: true, completion: nil)

@@ -25,8 +25,8 @@ class OrderConfirmationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        confirmationLabel
-            .text = "Thank you for your order! Your wait time is approximately \(minutesToPrepare) minutes."
+        confirmationLabel.text =
+        "Thank you for your order! Your wait time is approximately \(minutesToPrepare) minutes."
     }
 
     @IBAction func dismissAction(_ sender: Any) {

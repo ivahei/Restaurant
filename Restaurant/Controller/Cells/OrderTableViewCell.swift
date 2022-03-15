@@ -13,9 +13,9 @@ final class OrderTableViewCell: UITableViewCell {
 
     let menuController = MenuController.shared
 
-    @IBOutlet var orderName: UILabel!
-    @IBOutlet var orderPrice: UILabel!
-    @IBOutlet var orderImageView: UIImageView!
+    @IBOutlet private var orderName: UILabel!
+    @IBOutlet private var orderPrice: UILabel!
+    @IBOutlet private var orderImageView: UIImageView!
 
     func populate(with model: MenuItem) {
         orderName.text = model.name
