@@ -25,12 +25,17 @@ class OrderConfirmationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        confirmationLabel
-            .text = "Thank you for your order! Your wait time is approximately \(minutesToPrepare) minutes."
+        confirmationLabel.text = String.getConfirmationText(minutes: minutesToPrepare)
     }
 
     @IBAction func dismissAction(_ sender: Any) {
         menuController.order.menuItems.removeAll()
         self.performSegue(withIdentifier: "unwindToCategoryVC", sender: nil)
+    }
+}
+
+private extension String {
+    static func getConfirmationText(minutes: Int) -> String {
+        "Thank you for your order! Your wait time is approximately \(minutes) minutes."
     }
 }

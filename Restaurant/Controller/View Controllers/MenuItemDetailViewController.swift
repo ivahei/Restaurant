@@ -53,7 +53,7 @@ final class MenuItemDetailViewController: UIViewController {
         nameLabel.text = menuItem.name
         priceLabel.text = menuItem.price.formatted(.currency(code: "usd"))
         detailTextLabel.text = menuItem.detailText
-        imageView.kf.setImage(with: menuItem.imageURL, placeholder: UIImage(systemName: "trash") )
+        imageView.kf.setImage(with: menuItem.imageURL, placeholder: UIImage.Icons.trash)
     }
 
     // MARK: - Order Button Tapped

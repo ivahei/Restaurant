@@ -13,13 +13,19 @@ final class OrderTableViewCell: UITableViewCell {
 
     let menuController = MenuController.shared
 
-    @IBOutlet var orderName: UILabel!
-    @IBOutlet var orderPrice: UILabel!
-    @IBOutlet var orderImageView: UIImageView!
+    @IBOutlet private var orderName: UILabel!
+    @IBOutlet private var orderPrice: UILabel!
+    @IBOutlet private var orderImageView: UIImageView!
 
     func populate(with model: MenuItem) {
         orderName.text = model.name
         orderPrice.text = model.price.formatted(.currency(code: "usd"))
-        orderImageView.kf.setImage(with: model.imageURL, placeholder: UIImage(systemName: "trash") )
+        orderImageView.kf.setImage(with: model.imageURL, placeholder: UIImage.Icons.trash)
+    }
+}
+
+extension UIImage {
+    enum Icons {
+        static let trash = UIImage(systemName: "trash")
     }
 }

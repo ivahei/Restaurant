@@ -48,13 +48,8 @@ final class OrderTableViewController: UITableViewController {
     // MARK: - Check Content of menuItems
 
     func checkContent(of menuItems: [MenuItem]) {
-        if menuItems.isEmpty {
-            navigationItem.leftBarButtonItem?.isEnabled = false
-            navigationItem.rightBarButtonItem?.isEnabled = false
-        } else {
-            navigationItem.leftBarButtonItem?.isEnabled = true
-            navigationItem.rightBarButtonItem?.isEnabled = true
-        }
+        navigationItem.leftBarButtonItem?.isEnabled = !menuItems.isEmpty
+        navigationItem.rightBarButtonItem?.isEnabled = !menuItems.isEmpty
     }
 
     // MARK: - Confirm Order Segue
@@ -74,17 +69,17 @@ final class OrderTableViewController: UITableViewController {
             message: "You are about to submit your order with a total of \(formattedTotal)",
             preferredStyle: .actionSheet
         )
-        alertController.addAction(UIAlertAction(title: "Submit", style: .default, handler: { [weak self] _ in
+        alertController.addAction(UIAlertAction(title: "Submit", style: .default) { [weak self] _ in
             self?.uploadOrder()
-        }))
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        })
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
 
         present(alertController, animated: true, completion: nil)
     }
 
     func uploadOrder() {
         let menuIds = MenuController.shared.order.menuItems.map { $0.id }
-        Task.init {
+        Task {
             do {
                 let minutesToPrepare = try await
                 menuController.sendRequest(SubmitOrder(menuIDs: menuIds))
